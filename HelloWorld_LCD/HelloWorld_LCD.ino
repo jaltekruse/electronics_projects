@@ -504,20 +504,19 @@ byte run3[] = {
 
 void setup() {
   lcd.begin(16, 2);
+  lcd.clear();
   lcd.createChar(0, run0);
   lcd.createChar(1, run1);
   lcd.createChar(2, run2);
   lcd.createChar(3, run3);
-  lcd.setCursor(0, 0);
-  lcd.write((char)0);
-  lcd.setCursor(1, 0);
-  lcd.write((char)1);
-  lcd.setCursor(2, 0);
-  lcd.write((char)2);
-  lcd.setCursor(3, 0);
-  lcd.write((char)3);
 }
 
 void loop() {
-  
+  while (1) {
+    for (int i = 0; i < 4; i++) {
+      lcd.setCursor(0, 0);
+      lcd.write((char)i);
+      delay(200);
+    }
+  }
 }
