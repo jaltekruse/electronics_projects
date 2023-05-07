@@ -434,35 +434,33 @@ void LiquidCrystal::write8bits(uint8_t value) {
 
 
 const int rs = 2, 
-          en = 3, 
-          d4 = 6, 
-          d5 = 7, 
-          d6 = 8, 
-          d7 = 9;
+          en = 3,
+          d0 = 6, 
+          d1 = 7, 
+          d2 = 8, 
+          d3 = 9,
+          d4 = 10, 
+          d5 = 11, 
+          d6 = 12, 
+          d7 = 13;
 
+//LiquidCrystal lcd(rs, en, d0, d1, d2, d3, d4, d5, d6, d7);
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
+byte smiley[8] = {
+  B00000,
+  B10001,
+  B00000,
+  B00000,
+  B10001,
+  B01110,
+  B00000,
+};
+
 void setup() {
+  lcd.createChar(0, smiley);
   lcd.begin(16, 2);
-  Serial.begin(9600);
+  lcd.write(byte(0));
 }
 
-String Mario="Mario's Ideas                   ";
-
-void loop() {
-  lcd.clear() ; //d
-  delay(3000);//d
-   
-   for(int i=0;i<Mario.length();i++){
-    lcd.print(Mario.charAt(i));
-    delay(200);
-  } 
-  lcd.setCursor(16, 1);
-  lcd.autoscroll();
-  for(int i=0;i<Mario.length();i++){
-    lcd.print(Mario.charAt(i));
-    delay(400);  
-  }
-  lcd.noAutoscroll(); 
-  lcd.clear();
-} 
+void loop() {}
