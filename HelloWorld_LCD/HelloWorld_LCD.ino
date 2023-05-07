@@ -447,20 +447,22 @@ const int rs = 2,
 //LiquidCrystal lcd(rs, en, d0, d1, d2, d3, d4, d5, d6, d7);
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-byte smiley[8] = {
-  B00000,
+byte customChar[] = {
+  B01110,
+  B01010,
+  B01110,
+  B0000,
   B10001,
-  B00000,
-  B00000,
   B10001,
   B01110,
-  B00000,
+  B00000
 };
 
 void setup() {
-  lcd.createChar(0, smiley);
   lcd.begin(16, 2);
-  lcd.write(byte(0));
+  lcd.createChar(0, customChar);
+  lcd.home();
+  lcd.write((char)0);
 }
 
-void loop() {}
+void loop() { }
