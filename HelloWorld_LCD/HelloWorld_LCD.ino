@@ -458,11 +458,66 @@ byte customChar[] = {
   B00000
 };
 
+byte run0[] = {
+  B00110,
+  B00110,
+  B00101,
+  B01110,
+  B10100,
+  B01010,
+  B11001,
+  B00001
+};
+
+byte run1[] = {
+  B00110,
+  B00110,
+  B00101,
+  B01110,
+  B10100,
+  B00110,
+  B11010,
+  B00010
+};
+
+byte run2[] = {
+  B00110,
+  B00110,
+  B01100,
+  B01110,
+  B00110,
+  B00100,
+  B01110,
+  B00100
+};
+
+byte run3[] = {
+  B00110,
+  B00110,
+  B00101,
+  B01110,
+  B01100,
+  B00110,
+  B11010,
+  B00010
+};
+
 void setup() {
   lcd.begin(16, 2);
-  lcd.createChar(0, customChar);
-  lcd.home();
+  lcd.createChar(0, run0);
+  lcd.createChar(1, run1);
+  lcd.createChar(2, run2);
+  lcd.createChar(3, run3);
+  lcd.setCursor(0, 0);
   lcd.write((char)0);
+  lcd.setCursor(1, 0);
+  lcd.write((char)1);
+  lcd.setCursor(2, 0);
+  lcd.write((char)2);
+  lcd.setCursor(3, 0);
+  lcd.write((char)3);
 }
 
-void loop() { }
+void loop() {
+  
+}
