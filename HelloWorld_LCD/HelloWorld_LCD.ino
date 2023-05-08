@@ -547,22 +547,30 @@ void loop() {
       if(UD < UPMID - MID){
         x_pos = x_pos == 0 ? 0 : x_pos-1;
         lcd.clear();
+        lcd.setCursor(x_pos, y_pos);
+        lcd.write((char)i);
       }
       if(UD > UPMID + MID) {
         x_pos = x_pos == 15 ? 15 : x_pos+1;
         lcd.clear();
+        lcd.setCursor(x_pos, y_pos);
+        lcd.write((char)i);
       }
       
       // LEFT-RIGHT
       if(LR < LRMID - MID){
         y_pos = y_pos == 0 ? 0 : y_pos-1;
         lcd.clear();
+        lcd.setCursor(x_pos, y_pos);
+        lcd.write((char)i);
       }
       if(LR > LRMID + MID){
         y_pos = y_pos == 1 ? 1 : y_pos+1;
         lcd.clear();
+        lcd.setCursor(x_pos, y_pos);
+        lcd.write((char)i);
       }
-      delay(100);
+      delay(200);
     }
   }
 }
