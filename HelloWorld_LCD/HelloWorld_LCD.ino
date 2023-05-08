@@ -507,12 +507,6 @@ byte run3[] = {
 
 int UD = 0;
 int LR = 0;
-/* Arduino Micro output pins*/
-
-int DWN = 13;
-int UP = 12;
-int LEFT = 11;
-int RT = 10;
 
 /*Arduino Micro Input Pins */
 
@@ -535,17 +529,6 @@ void setup() {
   lcd.createChar(3, run3);
 
   // controller input
-  // TODO - might need to delete some as this was also driving LEDs to show direction
-  pinMode(DWN, OUTPUT);
-  pinMode(UP, OUTPUT);
-  pinMode(LEFT, OUTPUT);
-  pinMode(RT, OUTPUT);
-
-  digitalWrite(DWN, HIGH);
-  digitalWrite(UP, HIGH);
-  digitalWrite(LEFT, HIGH);
-  digitalWrite(RT, HIGH);
-
   //calabrate center
   LRMID = analogRead(ILR);
   UPMID = analogRead(IUP);
@@ -561,38 +544,23 @@ void loop() {
       LR = analogRead(ILR);
 
       // UP-DOWN
-
       if(UD < UPMID - MID){
         x_pos = x_pos == 0 ? 0 : x_pos-1;
         lcd.clear();
-        // digitalWrite(DWN, HIGH);
-      }else{
-        digitalWrite(DWN, LOW);
       }
-
       if(UD > UPMID + MID) {
         x_pos = x_pos == 15 ? 15 : x_pos+1;
         lcd.clear();
-        //digitalWrite(UP, HIGH);
-      }else{
-        digitalWrite(UP, LOW);
       }
       
       // LEFT-RIGHT
       if(LR < LRMID - MID){
         y_pos = y_pos == 0 ? 0 : y_pos-1;
         lcd.clear();
-        //digitalWrite(LEFT, HIGH);
-      }else{
-        digitalWrite(LEFT, LOW);
       }
-
       if(LR > LRMID + MID){
         y_pos = y_pos == 1 ? 1 : y_pos+1;
         lcd.clear();
-        //digitalWrite(RT, HIGH);
-      }else{
-        digitalWrite(RT, LOW);
       }
       delay(100);
     }
